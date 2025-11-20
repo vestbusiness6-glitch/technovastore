@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vestbusiness6-glitch.github.io/technovastore/sitemap.xml
