@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en"> 
+ <head> 
+  <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <title>TechNova Store — Best Tech Deals &amp; Accessories</title> 
+  <meta name="description" content="TechNova Store — melhores ofertas em teclados RGB, headsets surround e mouses gamers. Compare preços e compre com segurança via links oficiais."> 
+  <meta name="robots" content="index, follow"> 
+  <link rel="canonical" href="https://meusite.com/"> <!-- Open Graph --> 
+  <meta property="og:type" content="website"> 
+  <meta property="og:title" content="TechNova Store — Best Tech Deals &amp; Accessories"> 
+  <meta property="og:description" content="Encontre teclados, headsets e mouses com as melhores ofertas. Conheça os produtos recomendados pela TechSmart."> 
+  <meta property="og:url" content="https://meusite.com/"> 
+  <meta property="og:site_name" content="TechNovaStore"> 
+  <meta property="og:image" content="https://meusite.com/assets/og-image.jpg"> <!-- Twitter Card --> 
+  <meta name="twitter:card" content="summary_large_image"> 
+  <meta name="twitter:title" content="TechNova Store — Best Tech Deals &amp; Accessories"> 
+  <meta name="twitter:description" content="Encontre teclados, headsets e mouses com as melhores ofertas."> 
+  <meta name="twitter:image" content="https://meusite.com/assets/og-image.jpg"> <!-- Preconnect / font --> 
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&amp;display=swap" rel="stylesheet"> <!-- Minimal critical CSS in head, rest kept small --> 
+  <style>
+    :root{--primary:#007bff;--primary-2:#00c6ff;--bg:#f5f6f8}
+    *{box-sizing:border-box}
+    body,html{margin:0;padding:0;font-family:'Poppins',sans-serif;background:var(--bg);overflow-x:hidden;color:#222}
+    a{color:inherit}
+    /* Preloader */
+    #preloader{position:fixed;inset:0;background:linear-gradient(135deg,var(--primary),var(--primary-2));display:flex;align-items:center;justify-content:center;z-index:9999;flex-direction:column}
+    #preloader h1{color:#fff;font-size:2.4rem;margin:0;display:flex;flex-wrap:wrap;gap:0.2rem}
+    #preloader h1 span{opacity:0;transform:translateY(-30px);display:inline-block;animation:letterJump 1s forwards}
+    @keyframes letterJump{0%{opacity:0;transform:translateY(-30px) rotate(-20deg)}50%{opacity:1;transform:translateY(10px) rotate(10deg)}100%{opacity:1;transform:translateY(0) rotate(0)}}
+    /* Layout */
+    #site{display:none}
+    header{background:linear-gradient(90deg,var(--primary),var(--primary-2));color:#fff;padding:18px;text-align:center;box-shadow:0 4px 10px rgba(0,0,0,0.12)}
+    header h1{font-size:1.6rem;margin:0}
+    header p{margin:6px 0 0;font-size:0.95rem}
+    nav{display:flex;justify-content:center;background:#fff;border-bottom:1px solid #e6e6e6;padding:10px;flex-wrap:wrap;gap:10px}
+    nav a{text-decoration:none;color:#333;margin:0 12px;font-weight:600;transition:color .2s}
+    nav a:hover{color:var(--primary)}
+    section{padding:36px 20px;max-width:1200px;margin:auto}
+    .headline h2{font-size:1.8rem;color:var(--primary);text-align:center;margin:0 0 6px}
+    .headline p{text-align:center;margin:0 0 18px;color:#444}
+    .product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+    .product{background:#fff;border-radius:12px;box-shadow:0 6px 16px rgba(0,0,0,0.06);padding:14px;text-align:center;transition:transform .25s}
+    .product:hover{transform:translateY(-6px)}
+    .product img{width:100%;height:200px;object-fit:cover;border-radius:8px;display:block}
+    .product h3{margin:12px 0 6px;font-size:1.05rem}
+    .product p{margin:0;color:#666}
+    .buy-btn{display:inline-block;padding:10px 18px;background:var(--primary);color:#fff;border-radius:8px;text-decoration:none;margin-top:10px;font-weight:700}
+    .buy-btn:focus{outline:3px solid rgba(0,123,255,0.25)}
+    .video-section iframe{width:100%;max-width:900px;height:400px;border-radius:12px;border:0;display:block;margin:18px auto;box-shadow:0 6px 18px rgba(0,0,0,0.12)}
+    footer{background:#111;color:#fff;padding:18px;text-align:center;font-size:0.9rem}
+    /* Responsive tweaks */
+    @media(max-width:600px){#preloader h1{font-size:1.6rem} .product img{height:160px}}
+    .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+    .skip-link:focus{left:8px;top:8px;width:auto;height:auto;background:#fff;padding:8px;border-radius:4px;box-shadow:0 4px 16px rgba(0,0,0,0.15)}
+  </style> 
+ </head> 
+ <body> <a class="skip-link" href="#main">Skip to content</a> <!-- Preloader / Animation --> 
+  <div id="preloader" aria-hidden="true"> 
+   <h1 id="preloader-text" aria-hidden="true"></h1> 
+   <p style="color:white;margin-top:10px;opacity:0.9">Welcome to TechNova Store</p> 
+  </div> <!-- Main Site --> 
+  <div id="site" role="main" aria-labelledby="site-title"> 
+   <header> 
+    <h1 id="site-title">TechNova Store</h1> 
+    <p>Your global shop for electronics and tech accessories</p> 
+   </header> 
+   <nav aria-label="Main navigation"> <a href="#products">Products</a> <a href="#video">Trailer</a> <a href="#faq">FAQ</a> 
+   </nav> 
+   <section id="products"> 
+    <div class="headline"> 
+     <h2>Top Tech Products</h2> 
+     <p>Best deals on keyboards, headsets, mice, and more!</p> 
+    </div> 
+    <div class="product-grid" id="product-list" aria-live="polite"></div> 
+   </section> 
+   <section id="video" class="video-section" aria-labelledby="video-heading"> 
+    <h2 id="video-heading">Watch Our Trailer</h2> <iframe src="https://www.youtube.com/embed/ZIPuaWKUQis" title="TechNovaStore Trailer" allowfullscreen loading="lazy"></iframe> 
+   </section> 
+   <section id="faq" aria-labelledby="faq-heading"> 
+    <h3 id="faq-heading">Frequently Asked Questions (FAQ)</h3> 
+    <p><strong>1. How can I buy a product?</strong><br>Click “Buy Now” to go to Amazon via affiliate link.</p> 
+    <p><strong>2. Can I buy from any country?</strong><br>Yes, Amazon global links allow purchases worldwide.</p> 
+    <p><strong>3. Is this site official?</strong><br>Yes, we are an official Amazon Affiliate site promoting verified products.</p> 
+   </section> 
+   <footer>
+     © 2025 TechNovaStore. All rights reserved. 
+   </footer> 
+  </div> <!-- Product data and scripts --> 
+  <script>
+    // === Product data
+    const produtos = [
+      { id: "p1", nome: "RGB Mechanical Keyboard", preco: "$49.99", imagem: "https://m.media-amazon.com/images/I/71kr3WAj1FL._AC_SL1500_.jpg", link: "#", availability: "InStock", brand: "Generic" },
+      { id: "p2", nome: "Surround Sound Headset", preco: "$59.99", imagem: "https://m.media-amazon.com/images/I/61CGHv6kmWL._AC_SL1500_.jpg", link: "#", availability: "InStock", brand: "Generic" },
+      { id: "p3", nome: "Gaming Mouse", preco: "$29.99", imagem: "https://m.media-amazon.com/images/I/61k5+JAXeDL._AC_SL1500_.jpg", link: "#", availability: "InStock", brand: "Generic" }
+    ];
+
+    // === Render products (with lazy loading and accessibility)
+    const container = document.getElementById('product-list');
+    produtos.forEach(prod => {
+      const card = document.createElement('article');
+      card.className = 'product';
+      card.innerHTML = `
+        <img src="${prod.imagem}" alt="${prod.nome}" loading="lazy" width="600" height="400" />
+        <h3>${prod.nome}</h3>
+        <p>${prod.preco}</p>
+        <a href="${prod.link}" class="buy-btn" rel="noopener noreferrer" aria-label="Buy ${prod.nome}">Buy Now</a>
+      `;
+      container.appendChild(card);
+    });
+
+    // === Preloader text animation
+    const text = "TechNova Store";
+    const preloaderText = document.getElementById('preloader-text');
+    text.split("").forEach((char, i) => {
+      const span = document.createElement('span');
+      span.textContent = char;
+      span.style.animationDelay = `${i * 0.08}s`;
+      preloaderText.appendChild(span);
+    });
+
+    // Hide preloader after animation and make site visible (use reduced time for real content)
+    window.addEventListener('load', () => {
+      // ensure minimum animation time for UX
+      setTimeout(() => {
+        document.getElementById('preloader').style.display = 'none';
+        document.getElementById('site').style.display = 'block';
+        document.getElementById('site').focus();
+      }, 900); // 0.9s after load (adjust if needed)
+    });
+
+    // === Dynamic JSON-LD generation for SEO (WebSite, Organization, and Products)
+    (function generateJSONLD(){
+      const baseUrl = 'https://meusite.com'; // <<< replace with your real domain
+      const website = {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "url": baseUrl,
+        "name": "TechNova Store",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": baseUrl + "/?s={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      };
+
+      const organization = {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "TechNova Store",
+        "url": baseUrl,
+        "logo": baseUrl + "/assets/logo.png",
+        "sameAs": []
+      };
+
+      const productItems = produtos.map(p => ({
+        "@type": "Product",
+        "@id": baseUrl + "/#"+p.id,
+        "name": p.nome,
+        "image": [p.imagem],
+        "brand": { "@type": "Brand", "name": p.brand },
+        "offers": {
+          "@type": "Offer",
+          "url": baseUrl,
+          "price": p.preco.replace('$',''),
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/" + p.availability
+        }
+      }));
+
+      const graph = [website, organization, ...productItems];
+
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.text = JSON.stringify({ "@context": "https://schema.org", "@graph": graph }, null, 2);
+      document.head.appendChild(script);
+    })();
+  </script> 
+ 
+</body></html>"https://schema.org/" + p.availability
+        }
+      }));
+
+      const graph = [website, organization, ...productItems];
+
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.text = JSON.stringify({ "@context": "https://schema.org", "@graph": graph }, null, 2);
+      document.head.appendChild(script);
+    })();
+  </script> 
+ 
+</body></html>
