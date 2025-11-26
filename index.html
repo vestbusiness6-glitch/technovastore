@@ -1,182 +1,240 @@
 <!doctype html>
-<html lang="en"> 
- <head> 
-  <meta charset="utf-8"> 
-  <meta name="viewport" content="width=device-width, initial-scale=1"> 
-  <meta name="google-site-verification" content="Z42uyfwIYE2BKmPo8rq_U56tefVXGc41oknqC_PUJDk" />
-  <title>TechNova Store — Best Tech Deals &amp; Accessories</title> 
-  <meta name="description" content="TechNova Store — melhores ofertas em teclados RGB, headsets surround e mouses gamers. Compare preços e compre com segurança via links oficiais."> 
-  <meta name="robots" content="index, follow"> 
-  <link rel="canonical" href="https://meusite.com/"> <!-- Open Graph --> 
-  <meta property="og:type" content="website"> 
-  <meta property="og:title" content="TechNova Store — Best Tech Deals &amp; Accessories"> 
-  <meta property="og:description" content="Encontre teclados, headsets e mouses com as melhores ofertas. Conheça os produtos recomendados pela TechSmart."> 
-  <meta property="og:url" content="https://meusite.com/"> 
-  <meta property="og:site_name" content="TechNovaStore"> 
-  <meta property="og:image" content="https://meusite.com/assets/og-image.jpg"> <!-- Twitter Card --> 
-  <meta name="twitter:card" content="summary_large_image"> 
-  <meta name="twitter:title" content="TechNova Store — Best Tech Deals &amp; Accessories"> 
-  <meta name="twitter:description" content="Encontre teclados, headsets e mouses com as melhores ofertas."> 
-  <meta name="twitter:image" content="https://meusite.com/assets/og-image.jpg"> <!-- Preconnect / font --> 
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&amp;display=swap" rel="stylesheet"> <!-- Minimal critical CSS in head, rest kept small --> 
-  <style>
-    :root{--primary:#007bff;--primary-2:#00c6ff;--bg:#f5f6f8}
-    *{box-sizing:border-box}
-    body,html{margin:0;padding:0;font-family:'Poppins',sans-serif;background:var(--bg);overflow-x:hidden;color:#222}
-    a{color:inherit}
-    /* Preloader */
-    #preloader{position:fixed;inset:0;background:linear-gradient(135deg,var(--primary),var(--primary-2));display:flex;align-items:center;justify-content:center;z-index:9999;flex-direction:column}
-    #preloader h1{color:#fff;font-size:2.4rem;margin:0;display:flex;flex-wrap:wrap;gap:0.2rem}
-    #preloader h1 span{opacity:0;transform:translateY(-30px);display:inline-block;animation:letterJump 1s forwards}
-    @keyframes letterJump{0%{opacity:0;transform:translateY(-30px) rotate(-20deg)}50%{opacity:1;transform:translateY(10px) rotate(10deg)}100%{opacity:1;transform:translateY(0) rotate(0)}}
-    /* Layout */
-    #site{display:none}
-    header{background:linear-gradient(90deg,var(--primary),var(--primary-2));color:#fff;padding:18px;text-align:center;box-shadow:0 4px 10px rgba(0,0,0,0.12)}
-    header h1{font-size:1.6rem;margin:0}
-    header p{margin:6px 0 0;font-size:0.95rem}
-    nav{display:flex;justify-content:center;background:#fff;border-bottom:1px solid #e6e6e6;padding:10px;flex-wrap:wrap;gap:10px}
-    nav a{text-decoration:none;color:#333;margin:0 12px;font-weight:600;transition:color .2s}
-    nav a:hover{color:var(--primary)}
-    section{padding:36px 20px;max-width:1200px;margin:auto}
-    .headline h2{font-size:1.8rem;color:var(--primary);text-align:center;margin:0 0 6px}
-    .headline p{text-align:center;margin:0 0 18px;color:#444}
-    .product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
-    .product{background:#fff;border-radius:12px;box-shadow:0 6px 16px rgba(0,0,0,0.06);padding:14px;text-align:center;transition:transform .25s}
-    .product:hover{transform:translateY(-6px)}
-    .product img{width:100%;height:200px;object-fit:cover;border-radius:8px;display:block}
-    .product h3{margin:12px 0 6px;font-size:1.05rem}
-    .product p{margin:0;color:#666}
-    .buy-btn{display:inline-block;padding:10px 18px;background:var(--primary);color:#fff;border-radius:8px;text-decoration:none;margin-top:10px;font-weight:700}
-    .buy-btn:focus{outline:3px solid rgba(0,123,255,0.25)}
-    .video-section iframe{width:100%;max-width:900px;height:400px;border-radius:12px;border:0;display:block;margin:18px auto;box-shadow:0 6px 18px rgba(0,0,0,0.12)}
-    footer{background:#111;color:#fff;padding:18px;text-align:center;font-size:0.9rem}
-    /* Responsive tweaks */
-    @media(max-width:600px){#preloader h1{font-size:1.6rem} .product img{height:160px}}
-    .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
-    .skip-link:focus{left:8px;top:8px;width:auto;height:auto;background:#fff;padding:8px;border-radius:4px;box-shadow:0 4px 16px rgba(0,0,0,0.15)}
-  </style> 
- </head> 
- <body> <a class="skip-link" href="#main">Skip to content</a> <!-- Preloader / Animation --> 
-  <div id="preloader" aria-hidden="true"> 
-   <h1 id="preloader-text" aria-hidden="true"></h1> 
-   <p style="color:white;margin-top:10px;opacity:0.9">Welcome to TechNova Store</p> 
-  </div> <!-- Main Site --> 
-  <div id="site" role="main" aria-labelledby="site-title"> 
-   <header> 
-    <h1 id="site-title">TechNova Store</h1> 
-    <p>Your global shop for electronics and tech accessories</p> 
-   </header> 
-   <nav aria-label="Main navigation"> <a href="#products">Products</a> <a href="#video">Trailer</a> <a href="#faq">FAQ</a> 
-   </nav> 
-   <section id="products"> 
-    <div class="headline"> 
-     <h2>Top Tech Products</h2> 
-     <p>Best deals on keyboards, headsets, mice, and more!</p> 
-    </div> 
-    <div class="product-grid" id="product-list" aria-live="polite"></div> 
-   </section> 
-   <section id="video" class="video-section" aria-labelledby="video-heading"> 
-    <h2 id="video-heading">Watch Our Trailer</h2> <iframe src="https://www.youtube.com/embed/ZIPuaWKUQis" title="TechNovaStore Trailer" allowfullscreen loading="lazy"></iframe> 
-   </section> 
-   <section id="faq" aria-labelledby="faq-heading"> 
-    <h3 id="faq-heading">Frequently Asked Questions (FAQ)</h3> 
-    <p><strong>1. How can I buy a product?</strong><br>Click “Buy Now” to go to Amazon via affiliate link.</p> 
-    <p><strong>2. Can I buy from any country?</strong><br>Yes, Amazon global links allow purchases worldwide.</p> 
-    <p><strong>3. Is this site official?</strong><br>Yes, we are an official Amazon Affiliate site promoting verified products.</p> 
-   </section> 
-   <footer>
-     © 2025 TechNovaStore. All rights reserved. 
-   </footer> 
-  </div> <!-- Product data and scripts --> 
-  <script>
-    // === Product data
-    const produtos = [
-      { id: "p1", nome: "RGB Mechanical Keyboard", preco: "$49.99", imagem: "https://m.media-amazon.com/images/I/71kr3WAj1FL._AC_SL1500_.jpg", link: "#", availability: "InStock", brand: "Generic" },
-      { id: "p2", nome: "Surround Sound Headset", preco: "$59.99", imagem: "https://m.media-amazon.com/images/I/61CGHv6kmWL._AC_SL1500_.jpg", link: "#", availability: "InStock", brand: "Generic" },
-      { id: "p3", nome: "Gaming Mouse", preco: "$29.99", imagem: "https://m.media-amazon.com/images/I/61k5+JAXeDL._AC_SL1500_.jpg", link: "#", availability: "InStock", brand: "Generic" }
-    ];
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>TechNova Store — Single File Categories</title>
+<meta name="description" content="TechNova Store — exemplo com categorias em um único arquivo; cada categoria abre em nova aba mostrando apenas o produto (view única)." />
+<style>
+  :root{--primary:#007bff;--bg:#f5f6f8;--card-bg:#fff}
+  *{box-sizing:border-box}
+  html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial; background:var(--bg);color:#111}
+  header{background:linear-gradient(90deg,var(--primary),#00c6ff);color:#fff;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+  header .brand{font-weight:700;font-size:1.1rem}
+  nav{display:flex;gap:8px;flex-wrap:wrap}
+  nav a{background:#e9f6ff;color:var(--primary);text-decoration:none;padding:8px 12px;border-radius:8px;font-weight:700;border:1px solid rgba(0,123,255,0.06)}
+  main.site{max-width:1100px;margin:28px auto;padding:0 18px}
+  .intro{background:var(--card-bg);padding:20px;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,0.06)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:18px}
+  .card{background:var(--card-bg);padding:14px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.06)}
+  .card img{width:100%;height:200px;object-fit:cover;border-radius:8px}
+  .buy{display:inline-block;margin-top:10px;padding:10px 14px;background:var(--primary);color:white;border-radius:8px;text-decoration:none;font-weight:800}
+  footer{max-width:1100px;margin:40px auto 24px;color:#666;padding:0 18px;font-size:0.95rem}
 
-    // === Render products (with lazy loading and accessibility)
-    const container = document.getElementById('product-list');
-    produtos.forEach(prod => {
-      const card = document.createElement('article');
-      card.className = 'product';
-      card.innerHTML = `
-        <img src="${prod.imagem}" alt="${prod.nome}" loading="lazy" width="600" height="400" />
-        <h3>${prod.nome}</h3>
-        <p>${prod.preco}</p>
-        <a href="${prod.link}" class="buy-btn" rel="noopener noreferrer" aria-label="Buy ${prod.nome}">Buy Now</a>
+  /* VIEW ÚNICA (quando ?cat=XXXX) - ocupa a viewport e remove scroll */
+  .single-view {height:100vh;display:flex;align-items:center;justify-content:center;padding:18px}
+  .single-card{
+    width:min(720px,96vw);
+    background:var(--card-bg);
+    border-radius:12px;
+    padding:18px;
+    box-shadow:0 20px 40px rgba(2,6,23,0.12);
+    display:flex;
+    gap:18px;
+    align-items:center;
+  }
+  .single-card img{width:360px;max-width:40vw;height:360px;object-fit:cover;border-radius:10px;flex-shrink:0}
+  .single-info{flex:1;min-width:0}
+  .single-info h2{margin:0 0 8px;font-size:1.35rem;color:#0b2540}
+  .single-info p{margin:6px 0;color:#444}
+  .meta-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:12px}
+  .price{font-weight:800;font-size:1.25rem;color:#0b2540}
+  .controls{display:flex;gap:8px;align-items:center;margin-top:12px}
+  .link-neutral{background:#f0f4f8;border:1px solid #e6eef7;padding:8px 10px;border-radius:8px;text-decoration:none;color:#0b2540;font-weight:700}
+  /* prevent scroll when single-view active */
+  .no-scroll{height:100vh;overflow:hidden}
+  /* small screens */
+  @media(max-width:800px){
+    .single-card{flex-direction:column;align-items:stretch}
+    .single-card img{width:100%;height:220px;max-width:none}
+  }
+</style>
+</head>
+<body>
+  <header>
+    <div class="brand">TechNova Store</div>
+    <nav aria-label="Categorias">
+      <!-- Note: links open the SAME file with ?cat=... and target _blank -->
+      <a href="?cat=pcgamer" target="_blank" rel="noopener noreferrer">PC Gamer</a>
+      <a href="?cat=acessorios" target="_blank" rel="noopener noreferrer">Acessórios</a>
+      <a href="?cat=laptops" target="_blank" rel="noopener noreferrer">Laptops</a>
+      <a href="?cat=tablets" target="_blank" rel="noopener noreferrer">Tablets</a>
+      <a href="?cat=telefones" target="_blank" rel="noopener noreferrer">Telefones</a>
+      <a href="?cat=outros" target="_blank" rel="noopener noreferrer">Outros</a>
+      <a href="?cat=faq" target="_blank" rel="noopener noreferrer">FAQ</a>
+    </nav>
+  </header>
+
+  <!-- Main content area (home view) -->
+  <main id="main" class="site" aria-live="polite">
+    <div class="intro" id="homeIntro">
+      <h1>Bem-vindo à TechNovaStore</h1>
+      <p>Selecione uma categoria no menu superior — cada clique abre uma nova aba que mostrará apenas o produto daquela categoria (view única, sem rolagem).</p>
+
+      <div class="grid" id="homeGrid">
+        <!-- small preview cards for every category (non-essential) -->
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 TechNovaStore — menu abre nova aba mostrando apenas a categoria selecionada.
+  </footer>
+
+<script>
+/* ================
+   Dados de exemplo
+   ================ */
+const CATEGORIES = {
+  "pcgamer": [
+    { id: "p1", nome: "Teclado Mecânico RGB", preco: "$49.99", imagem: "https://m.media-amazon.com/images/I/71kr3WAj1FL._AC_SL1500_.jpg", link: "https://www.amazon.com/dp/B07ZZWZG5S" },
+    { id: "p3", nome: "Mouse Gamer", preco: "$29.99", imagem: "https://m.media-amazon.com/images/I/61k5+JAXeDL._AC_SL1500_.jpg", link: "https://www.amazon.com/dp/B08ABC1234" }
+  ],
+  "acessorios": [
+    { id: "p2", nome: "Headset Surround", preco: "$59.99", imagem: "https://m.media-amazon.com/images/I/61CGHv6kmWL._AC_SL1500_.jpg", link: "https://www.amazon.com/dp/B07HEADSET" },
+    { id: "p7", nome: "USB Radio Adapter", preco: "$19.99", imagem: "https://m.media-amazon.com/images/I/41abcd1234._AC_.jpg", link: "https://www.amazon.com/dp/B07RADIO" }
+  ],
+  "laptops": [
+    { id: "p4", nome: "Thin Laptop 14\"", preco: "$699.99", imagem: "https://m.media-amazon.com/images/I/81bc8mA3nKL._AC_SL1500_.jpg", link: "https://www.amazon.com/dp/B07LAPTOP" }
+  ],
+  "tablets": [
+    { id: "p5", nome: "Android Tablet 10\"", preco: "$249.99", imagem: "https://m.media-amazon.com/images/I/71+QY8xN1fL._AC_SL1500_.jpg", link: "https://www.amazon.com/dp/B07TABLET" }
+  ],
+  "telefones": [
+    { id: "p6", nome: "Smartphone Pro", preco: "$899.00", imagem: "https://m.media-amazon.com/images/I/61m9Jk4C9jL._AC_SL1500_.jpg", link: "https://www.amazon.com/dp/B07PHONE" }
+  ],
+  "outros": [
+    { id: "p8", nome: "Cable Kit", preco: "$9.99", imagem: "https://m.media-amazon.com/images/I/51cablekit._AC_.jpg", link: "https://www.amazon.com/dp/B07CABLE" }
+  ]
+};
+
+/* ================
+   Utilitários
+   ================ */
+function qs(name){ return new URLSearchParams(location.search).get(name); }
+function clampInt(v, min, max){ v = parseInt(v,10); if (isNaN(v)) return min; return Math.max(min, Math.min(max, v)); }
+
+/* ================
+   Main rendering logic
+   ================ */
+const selectedCat = (qs('cat') || '').toLowerCase();
+const indexParam = qs('index'); // optional index to show a different product
+const productIndex = indexParam ? clampInt(indexParam, 0, 1000) : 0; // will clamp later
+
+// If a category is present in URL and exists in our data -> render single-view
+if (selectedCat && (selectedCat === 'faq' || Object.prototype.hasOwnProperty.call(CATEGORIES, selectedCat))) {
+  // Put body into no-scroll mode
+  document.documentElement.classList.add('no-scroll');
+  document.body.classList.add('no-scroll');
+
+  // Clear normal content
+  const main = document.getElementById('main');
+  main.innerHTML = ''; // remove the homepage intro
+
+  // If FAQ
+  if (selectedCat === 'faq') {
+    // Render a simple standalone FAQ view (single-view)
+    const wrapper = document.createElement('div');
+    wrapper.className = 'single-view';
+    wrapper.innerHTML = `
+      <div class="single-card" role="main" aria-labelledby="faq-title">
+        <div class="single-info" style="width:100%">
+          <h2 id="faq-title">FAQ — TechNovaStore</h2>
+          <p><strong>1. Como comprar?</strong> Clique no botão <em>Comprar</em> para ir ao link do produto.</p>
+          <p><strong>2. Envia para qualquer país?</strong> Dependendo do vendedor/loja (Amazon Global disponível em muitos produtos).</p>
+          <p><strong>3. Este site é oficial?</strong> Este exemplo mostra um site afiliado — substitua os links por seus links de afiliado reais.</p>
+          <div class="controls" style="margin-top:18px">
+            <a class="link-neutral" href="/" onclick="window.location='/'">Ir para Home</a>
+          </div>
+        </div>
+      </div>
+    `;
+    main.appendChild(wrapper);
+  } else {
+    // Normal category: show only one product (first or index specified)
+    const arr = CATEGORIES[selectedCat] || [];
+    const idx = Math.min(Math.max(0, productIndex), Math.max(0, arr.length-1));
+    const product = arr[idx];
+
+    // If not found, show friendly message
+    if (!product) {
+      const wrapper = document.createElement('div');
+      wrapper.className = 'single-view';
+      wrapper.innerHTML = `
+        <div class="single-card" role="main">
+          <div class="single-info">
+            <h2>Categoria vazia</h2>
+            <p>Não há produtos nesta categoria.</p>
+            <div class="controls">
+              <a class="link-neutral" href="/" onclick="window.location='/'">Ir para Home</a>
+            </div>
+          </div>
+        </div>`;
+      main.appendChild(wrapper);
+    } else {
+      // Render single product view (no scroll)
+      const wrapper = document.createElement('div');
+      wrapper.className = 'single-view';
+      // allow user to pass index to show specific product; show index in UI and provide nav for next/prev (keeps single-file)
+      const total = arr.length;
+      wrapper.innerHTML = `
+        <div class="single-card" role="main" aria-labelledby="prod-title">
+          <img src="${encodeURI(product.imagem)}" alt="${escapeHtml(product.nome)}" />
+          <div class="single-info">
+            <h2 id="prod-title">${escapeHtml(product.nome)}</h2>
+            <p class="price">${escapeHtml(product.preco)}</p>
+            <p>Categoria: <strong>${escapeHtml(selectedCat)}</strong></p>
+            <div class="meta-row">
+              <a class="buy" href="${product.link}" target="_blank" rel="noopener noreferrer">Comprar</a>
+              <a class="link-neutral" href="/" onclick="window.location='/'">Voltar ao site</a>
+              <div style="margin-left:auto;color:#6b7280;font-weight:700">1 / ${total}</div>
+            </div>
+          </div>
+        </div>
       `;
-      container.appendChild(card);
-    });
+      main.appendChild(wrapper);
+    }
+  }
+} else {
+  // Home view: render small previews for categories
+  const grid = document.getElementById('homeGrid');
+  Object.keys(CATEGORIES).forEach(catKey => {
+    const arr = CATEGORIES[catKey];
+    // Some categories might be empty arrays; skip if no products (but still show if empty)
+    const first = Array.isArray(arr) && arr.length ? arr[0] : null;
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.style.minHeight = '140px';
+    card.innerHTML = `
+      <h3 style="margin:0 0 8px">${upperLabel(catKey)}</h3>
+      ${ first ? `<img src="${encodeURI(first.imagem)}" alt="${escapeHtml(first.nome)}" style="height:120px;object-fit:cover;margin-bottom:8px;border-radius:8px" />` : '<div style="height:120px;background:#f5f7fa;border-radius:8px"></div>' }
+      <div style="display:flex;gap:8px;align-items:center">
+        <a class="buy" href="?cat=${encodeURIComponent(catKey)}" target="_blank" rel="noopener noreferrer" style="background:#0b63d6">Abrir categoria</a>
+        ${ first ? `<a class="link-neutral" href="${first.link}" target="_blank" rel="noopener noreferrer">Comprar (exemplo)</a>` : '' }
+      </div>
+    `;
+    grid.appendChild(card);
+  });
+}
 
-    // === Preloader text animation
-    const text = "TechNova Store";
-    const preloaderText = document.getElementById('preloader-text');
-    text.split("").forEach((char, i) => {
-      const span = document.createElement('span');
-      span.textContent = char;
-      span.style.animationDelay = `${i * 0.08}s`;
-      preloaderText.appendChild(span);
-    });
-
-    // Hide preloader after animation and make site visible (use reduced time for real content)
-    window.addEventListener('load', () => {
-      // ensure minimum animation time for UX
-      setTimeout(() => {
-        document.getElementById('preloader').style.display = 'none';
-        document.getElementById('site').style.display = 'block';
-        document.getElementById('site').focus();
-      }, 900); // 0.9s after load (adjust if needed)
-    });
-
-    // === Dynamic JSON-LD generation for SEO (WebSite, Organization, and Products)
-    (function generateJSONLD(){
-      const baseUrl = 'https://meusite.com'; // <<< replace with your real domain
-      const website = {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "url": baseUrl,
-        "name": "TechNova Store",
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": baseUrl + "/?s={search_term_string}",
-          "query-input": "required name=search_term_string"
-        }
-      };
-
-      const organization = {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "TechNova Store",
-        "url": baseUrl,
-        "logo": baseUrl + "/assets/logo.png",
-        "sameAs": []
-      };
-
-      const productItems = produtos.map(p => ({
-        "@type": "Product",
-        "@id": baseUrl + "/#"+p.id,
-        "name": p.nome,
-        "image": [p.imagem],
-        "brand": { "@type": "Brand", "name": p.brand },
-        "offers": {
-          "@type": "Offer",
-          "url": baseUrl,
-          "price": p.preco.replace('$',''),
-          "priceCurrency": "USD",
-          "availability": "https://schema.org/" + p.availability
-        }
-      }));
-
-      const graph = [website, organization, ...productItems];
-
-      const script = document.createElement('script');
-      script.type = 'application/ld+json';
-      script.text = JSON.stringify({ "@context": "https://schema.org", "@graph": graph }, null, 2);
-      document.head.appendChild(script);
-    })();
-  </script> 
- 
-</body></html>
+/* ================
+   Small helpers
+   ================ */
+function upperLabel(key){
+  const map = {
+    'pcgamer':'PC Gamer',
+    'acessorios':'Acessórios',
+    'laptops':'Laptops',
+    'tablets':'Tablets',
+    'telefones':'Telefones',
+    'outros':'Outros'
+  };
+  return map[key] || key;
+}
+function escapeHtml(str){
+  if (!str && str!==0) return '';
+  return String(str).replace(/[&<>"']/g, function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]; });
+}
+</script>
+</body>
+</html>
