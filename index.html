@@ -1,240 +1,524 @@
 <!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>TechNova Store — Single File Categories</title>
-<meta name="description" content="TechNova Store — exemplo com categorias em um único arquivo; cada categoria abre em nova aba mostrando apenas o produto (view única)." />
-<style>
-  :root{--primary:#007bff;--bg:#f5f6f8;--card-bg:#fff}
-  *{box-sizing:border-box}
-  html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial; background:var(--bg);color:#111}
-  header{background:linear-gradient(90deg,var(--primary),#00c6ff);color:#fff;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-  header .brand{font-weight:700;font-size:1.1rem}
-  nav{display:flex;gap:8px;flex-wrap:wrap}
-  nav a{background:#e9f6ff;color:var(--primary);text-decoration:none;padding:8px 12px;border-radius:8px;font-weight:700;border:1px solid rgba(0,123,255,0.06)}
-  main.site{max-width:1100px;margin:28px auto;padding:0 18px}
-  .intro{background:var(--card-bg);padding:20px;border-radius:12px;box-shadow:0 6px 20px rgba(0,0,0,0.06)}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:18px}
-  .card{background:var(--card-bg);padding:14px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.06)}
-  .card img{width:100%;height:200px;object-fit:cover;border-radius:8px}
-  .buy{display:inline-block;margin-top:10px;padding:10px 14px;background:var(--primary);color:white;border-radius:8px;text-decoration:none;font-weight:800}
-  footer{max-width:1100px;margin:40px auto 24px;color:#666;padding:0 18px;font-size:0.95rem}
+  <!-- =========================
+       BASIC META + SEO
+       ========================= -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TechNova Store — Melhores Ofertas em Eletrônicos e Acessórios</title>
+  <meta name="description" content="TechNova Store: ofertas e análises em PC Gamer, acessórios, laptops, tablets e telefones. Compare preços e compre com segurança via links oficiais." />
+  <meta name="author" content="TechNova Store" />
+  <meta name="theme-color" content="#007bff" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <link rel="canonical" href="https://seuusuario.github.io/seurepo/" />
+  <meta name="language" content="pt-BR" />
+  <meta name="distribution" content="global" />
 
-  /* VIEW ÚNICA (quando ?cat=XXXX) - ocupa a viewport e remove scroll */
-  .single-view {height:100vh;display:flex;align-items:center;justify-content:center;padding:18px}
-  .single-card{
-    width:min(720px,96vw);
-    background:var(--card-bg);
-    border-radius:12px;
-    padding:18px;
-    box-shadow:0 20px 40px rgba(2,6,23,0.12);
-    display:flex;
-    gap:18px;
-    align-items:center;
+  <!-- ========== Open Graph ========== -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:title" content="TechNova Store — Melhores Ofertas em Eletrônicos e Acessórios" />
+  <meta property="og:description" content="Ofertas e análises em PC Gamer, acessórios, notebooks, tablets e celulares. Compare preços e compre com segurança via links oficiais." />
+  <meta property="og:url" content="https://seuusuario.github.io/seurepo/" />
+  <meta property="og:site_name" content="TechNova Store" />
+  <meta property="og:image" content="https://seuusuario.github.io/seurepo/assets/og-image.jpg" />
+  <meta property="og:image:alt" content="TechNova Store — eletrônicos e acessórios" />
+
+  <!-- ========== Twitter Card ========== -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@seu_twitter" />
+  <meta name="twitter:title" content="TechNova Store — Melhores Ofertas" />
+  <meta name="twitter:description" content="Ofertas e análises em PC Gamer, acessórios e dispositivos móveis." />
+  <meta name="twitter:image" content="https://seuusuario.github.io/seurepo/assets/og-image.jpg" />
+
+  <!-- Favicon placeholder (replace if you have one) -->
+  <link rel="icon" href="https://seuusuario.github.io/seurepo/assets/favicon.ico" />
+
+  <!-- ========== Styles (critical + responsive) ========== -->
+  <style>
+    :root{
+      --primary:#007bff; --accent:#00c6ff; --bg:#f5f6f8; --card:#fff; --muted:#6b7280;
+      --max-width:1200px;
+      --radius:12px;
+      --gap:16px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial;background:var(--bg);color:#0b2540}
+    a{color:inherit}
+    .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+    .skip-link:focus{left:8px;top:8px;width:auto;height:auto;background:#fff;padding:8px;border-radius:4px;box-shadow:0 6px 18px rgba(0,0,0,0.12)}
+    /* Header */
+    header{background:linear-gradient(90deg,var(--primary),var(--accent));color:#fff;padding:14px 18px;position:sticky;top:0;z-index:60;box-shadow:0 6px 18px rgba(2,6,23,0.08)}
+    .topbar{max-width:var(--max-width);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{font-weight:800;font-size:1.15rem}
+    nav{display:flex;gap:8px;flex-wrap:wrap}
+    nav a{background:rgba(255,255,255,0.12);padding:8px 12px;border-radius:10px;color:#fff;text-decoration:none;font-weight:700;display:flex;align-items:center;gap:8px}
+    nav a img{width:44px;height:44px;object-fit:cover;border-radius:8px}
+    nav a:hover{transform:translateY(-2px);background:rgba(255,255,255,0.16)}
+    /* Main */
+    main{max-width:var(--max-width);margin:18px auto;padding:0 18px}
+    .section{margin-top:22px}
+    .title{font-weight:800;font-size:1.05rem;margin:0 0 12px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--gap)}
+    .card{background:var(--card);padding:12px;border-radius:var(--radius);box-shadow:0 8px 24px rgba(2,6,23,0.04);display:flex;flex-direction:column;gap:8px;min-height:300px}
+    .card img{width:100%;height:160px;object-fit:cover;border-radius:8px}
+    .card h3{margin:6px 0 0;font-size:1rem}
+    .price{font-weight:800;color:#0b2540;margin-top:6px}
+    .actions{margin-top:auto;display:flex;gap:8px;align-items:center}
+    .btn{display:inline-block;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:800}
+    .btn-primary{background:var(--primary);color:#fff}
+    .btn-outline{background:transparent;border:1px solid #e6eef7;color:#083344}
+    /* Category buttons area (home page) */
+    .cat-buttons{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+    .cat-button{background:var(--card);padding:8px 10px;border-radius:10px;border:1px solid #e6eef7;display:flex;align-items:center;gap:10px;text-decoration:none;color:#083344}
+    .cat-button img{width:64px;height:64px;object-fit:cover;border-radius:8px;flex-shrink:0}
+    /* Video / FAQ / Comments */
+    .block{background:var(--card);padding:16px;border-radius:var(--radius);box-shadow:0 8px 20px rgba(2,6,23,0.06)}
+    iframe{width:100%;height:420px;border-radius:10px;border:0}
+    textarea{width:100%;min-height:100px;border-radius:10px;border:1px solid #e6eef7;padding:10px;font-size:1rem}
+    .comment-list{margin-top:12px;display:flex;flex-direction:column;gap:10px}
+    .comment-item{background:#f7fbff;border-radius:10px;padding:12px;border:1px solid #eaf6ff}
+    footer{max-width:var(--max-width);margin:30px auto;color:var(--muted);padding:0 18px;text-align:center}
+    /* category view */
+    .category-view{padding:14px}
+    .category-grid .card img{height:180px}
+    @media(max-width:900px){
+      .card img{height:140px}
+      iframe{height:260px}
+      nav a img{width:36px;height:36px}
+      .cat-button img{width:56px;height:56px}
+    }
+  </style>
+
+  <!-- JSON-LD base: Website + Organization (products appended later by script) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@graph":[
+      { "@type":"WebSite", "url":"https://seuusuario.github.io/seurepo/", "name":"TechNova Store", "description":"Ofertas e análises em PC Gamer, acessórios, notebooks, tablets e celulares." },
+      { "@type":"Organization", "name":"TechNova Store", "url":"https://seuusuario.github.io/seurepo/", "logo":"https://seuusuario.github.io/seurepo/assets/logo.png", "sameAs":[] }
+    ]
   }
-  .single-card img{width:360px;max-width:40vw;height:360px;object-fit:cover;border-radius:10px;flex-shrink:0}
-  .single-info{flex:1;min-width:0}
-  .single-info h2{margin:0 0 8px;font-size:1.35rem;color:#0b2540}
-  .single-info p{margin:6px 0;color:#444}
-  .meta-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:12px}
-  .price{font-weight:800;font-size:1.25rem;color:#0b2540}
-  .controls{display:flex;gap:8px;align-items:center;margin-top:12px}
-  .link-neutral{background:#f0f4f8;border:1px solid #e6eef7;padding:8px 10px;border-radius:8px;text-decoration:none;color:#0b2540;font-weight:700}
-  /* prevent scroll when single-view active */
-  .no-scroll{height:100vh;overflow:hidden}
-  /* small screens */
-  @media(max-width:800px){
-    .single-card{flex-direction:column;align-items:stretch}
-    .single-card img{width:100%;height:220px;max-width:none}
-  }
-</style>
+  </script>
 </head>
 <body>
+  <a class="skip-link" href="#main">Pular para o conteúdo</a>
+
+  <!-- ===== HEADER / NAV (Each nav item contains a thumbnail image + label; opens new tab with ?cat=...) -->
   <header>
-    <div class="brand">TechNova Store</div>
-    <nav aria-label="Categorias">
-      <!-- Note: links open the SAME file with ?cat=... and target _blank -->
-      <a href="?cat=pcgamer" target="_blank" rel="noopener noreferrer">PC Gamer</a>
-      <a href="?cat=acessorios" target="_blank" rel="noopener noreferrer">Acessórios</a>
-      <a href="?cat=laptops" target="_blank" rel="noopener noreferrer">Laptops</a>
-      <a href="?cat=tablets" target="_blank" rel="noopener noreferrer">Tablets</a>
-      <a href="?cat=telefones" target="_blank" rel="noopener noreferrer">Telefones</a>
-      <a href="?cat=outros" target="_blank" rel="noopener noreferrer">Outros</a>
-      <a href="?cat=faq" target="_blank" rel="noopener noreferrer">FAQ</a>
-    </nav>
+    <div class="topbar" role="banner">
+      <div class="brand" aria-hidden="false">TechNova Store</div>
+      <nav aria-label="Categorias" role="navigation">
+        <!-- Each anchor contains small image + label; opens index.html?cat=... in a new tab -->
+        <!-- Images here are previews for each category (user asked image next to button) -->
+        <a href="?cat=pcgamer" target="_blank" rel="noopener noreferrer" aria-label="Abrir PC Gamer">
+          <img src="https://m.media-amazon.com/images/I/71kr3WAj1FL._AC_SL1500_.jpg" alt="PC Gamer exemplo" />
+          <span>PC Gamer</span>
+        </a>
+        <a href="?cat=acessorios" target="_blank" rel="noopener noreferrer" aria-label="Abrir Acessórios">
+          <img src="https://m.media-amazon.com/images/I/61CGHv6kmWL._AC_SL1500_.jpg" alt="Acessórios exemplo" />
+          <span>Acessórios</span>
+        </a>
+        <a href="?cat=laptops" target="_blank" rel="noopener noreferrer" aria-label="Abrir Laptops">
+          <img src="https://m.media-amazon.com/images/I/81bc8mA3nKL._AC_SL1500_.jpg" alt="Laptops exemplo" />
+          <span>Laptops</span>
+        </a>
+        <a href="?cat=tablets" target="_blank" rel="noopener noreferrer" aria-label="Abrir Tablets">
+          <img src="https://m.media-amazon.com/images/I/71+QY8xN1fL._AC_SL1500_.jpg" alt="Tablets exemplo" />
+          <span>Tablets</span>
+        </a>
+        <a href="?cat=telefones" target="_blank" rel="noopener noreferrer" aria-label="Abrir Telefones">
+          <img src="https://m.media-amazon.com/images/I/61m9Jk4C9jL._AC_SL1500_.jpg" alt="Telefones exemplo" />
+          <span>Telefones</span>
+        </a>
+        <a href="?cat=outros" target="_blank" rel="noopener noreferrer" aria-label="Abrir Outros">
+          <img src="https://m.media-amazon.com/images/I/51cablekit._AC_.jpg" alt="Outros exemplo" />
+          <span>Outros</span>
+        </a>
+      </nav>
+    </div>
   </header>
 
-  <!-- Main content area (home view) -->
-  <main id="main" class="site" aria-live="polite">
-    <div class="intro" id="homeIntro">
-      <h1>Bem-vindo à TechNovaStore</h1>
-      <p>Selecione uma categoria no menu superior — cada clique abre uma nova aba que mostrará apenas o produto daquela categoria (view única, sem rolagem).</p>
+  <!-- ===== MAIN PAGE (Home or Category content depending on ?cat=...) -->
+  <main id="main" aria-live="polite">
+    <!-- Home default: previews, category buttons, video, faq, comments -->
+    <!-- 1) Product previews (one per category) -->
+    <section class="section" id="homeProducts" aria-labelledby="homeProductsTitle">
+      <h2 id="homeProductsTitle" class="title">Produtos em Destaque</h2>
+      <div class="grid" id="produtosGrid"><!-- populated by JS --></div>
+    </section>
 
-      <div class="grid" id="homeGrid">
-        <!-- small preview cards for every category (non-essential) -->
+    <!-- 2) Category buttons with images (home-level control) -->
+    <section class="section" id="homeCategories" aria-labelledby="homeCatTitle">
+      <h2 id="homeCatTitle" class="title">Navegue por Categorias</h2>
+      <div class="cat-buttons" id="homeCatButtons"><!-- populated by JS --></div>
+    </section>
+
+    <!-- 3) Video (placed after products and categories — user requested video later) -->
+    <section class="section" id="videoSection" aria-labelledby="videoTitle">
+      <h2 id="videoTitle" class="title">Trailer / Trend dos Produtos</h2>
+      <div class="block">
+        <iframe src="https://www.youtube.com/embed/ZIPuaWKUQis" title="Trailer TechNova" loading="lazy" allowfullscreen></iframe>
       </div>
-    </div>
+    </section>
+
+    <!-- 4) FAQ -->
+    <section class="section" id="faqSection" aria-labelledby="faqTitle">
+      <h2 id="faqTitle" class="title">Perguntas Frequentes</h2>
+      <div class="block" id="faqBlock">
+        <p><strong>1. Como comprar?</strong> — Clique em <em>Comprar</em> no cartão do produto; você será redirecionado ao vendedor.</p>
+        <p><strong>2. Envio internacional?</strong> — Depende do vendedor; verifique as condições no link do produto.</p>
+        <p><strong>3. Este site é oficial?</strong> — Este é um modelo. Substitua os links de demonstração pelos seus links reais.</p>
+        <p><strong>4. Onde ficam os comentários?</strong> — Abaixo, na seção de comentários: eles são salvos localmente no navegador.</p>
+      </div>
+    </section>
+
+    <!-- 5) Comments (global home-level comments plus per-category) -->
+    <section class="section" id="commentsSection" aria-labelledby="commentsTitle">
+      <h2 id="commentsTitle" class="title">Comentários</h2>
+      <div class="block">
+        <p>Deixe seu comentário sobre o site ou um produto. Os comentários são salvos no seu navegador (por categoria).</p>
+        <label><strong>Categoria:</strong></label>
+        <select id="commentCategory" style="padding:8px;border-radius:8px;border:1px solid #e6eef7;margin-top:6px">
+          <option value="home">Geral / Home</option>
+          <option value="pcgamer">PC Gamer</option>
+          <option value="acessorios">Acessórios</option>
+          <option value="laptops">Laptops</option>
+          <option value="tablets">Tablets</option>
+          <option value="telefones">Telefones</option>
+          <option value="outros">Outros</option>
+        </select>
+
+        <div style="margin-top:10px">
+          <input id="commentName" placeholder="Seu nome (opcional)" style="padding:10px;border-radius:8px;border:1px solid #e6eef7;width:100%;max-width:420px;box-sizing:border-box" />
+        </div>
+        <div style="margin-top:8px">
+          <textarea id="commentText" placeholder="Escreva seu comentário..."></textarea>
+        </div>
+        <div style="margin-top:8px;display:flex;gap:8px;align-items:center">
+          <button id="sendComment" class="btn btn-primary">Enviar Comentário</button>
+          <button id="clearAll" class="btn btn-outline">Limpar comentários locais</button>
+        </div>
+
+        <div class="comment-list" id="commentList" style="margin-top:12px"></div>
+      </div>
+    </section>
   </main>
 
   <footer>
-    © 2025 TechNovaStore — menu abre nova aba mostrando apenas a categoria selecionada.
+    © 2025 TechNova Store — Todos os direitos reservados.
   </footer>
 
-<script>
-/* ================
-   Dados de exemplo
-   ================ */
-const CATEGORIES = {
-  "pcgamer": [
-    { id: "p1", nome: "Teclado Mecânico RGB", preco: "$49.99", imagem: "https://m.media-amazon.com/images/I/71kr3WAj1FL._AC_SL1500_.jpg", link: "https://www.amazon.com/dp/B07ZZWZG5S" },
-    { id: "p3", nome: "Mouse Gamer", preco: "$29.99", imagem: "https://m.media-amazon.com/images/I/61k5+JAXeDL._AC_SL1500_.jpg", link: "https://www.amazon.com/dp/B08ABC1234" }
-  ],
-  "acessorios": [
-    { id: "p2", nome: "Headset Surround", preco: "$59.99", imagem: "https://m.media-amazon.com/images/I/61CGHv6kmWL._AC_SL1500_.jpg", link: "https://www.amazon.com/dp/B07HEADSET" },
-    { id: "p7", nome: "USB Radio Adapter", preco: "$19.99", imagem: "https://m.media-amazon.com/images/I/41abcd1234._AC_.jpg", link: "https://www.amazon.com/dp/B07RADIO" }
-  ],
-  "laptops": [
-    { id: "p4", nome: "Thin Laptop 14\"", preco: "$699.99", imagem: "https://m.media-amazon.com/images/I/81bc8mA3nKL._AC_SL1500_.jpg", link: "https://www.amazon.com/dp/B07LAPTOP" }
-  ],
-  "tablets": [
-    { id: "p5", nome: "Android Tablet 10\"", preco: "$249.99", imagem: "https://m.media-amazon.com/images/I/71+QY8xN1fL._AC_SL1500_.jpg", link: "https://www.amazon.com/dp/B07TABLET" }
-  ],
-  "telefones": [
-    { id: "p6", nome: "Smartphone Pro", preco: "$899.00", imagem: "https://m.media-amazon.com/images/I/61m9Jk4C9jL._AC_SL1500_.jpg", link: "https://www.amazon.com/dp/B07PHONE" }
-  ],
-  "outros": [
-    { id: "p8", nome: "Cable Kit", preco: "$9.99", imagem: "https://m.media-amazon.com/images/I/51cablekit._AC_.jpg", link: "https://www.amazon.com/dp/B07CABLE" }
-  ]
-};
+  <!-- =========================
+       SCRIPT: Data, Rendering, Comments, Category pages, JSON-LD injection
+       ========================= -->
+  <script>
+  (function(){
+    'use strict';
 
-/* ================
-   Utilitários
-   ================ */
-function qs(name){ return new URLSearchParams(location.search).get(name); }
-function clampInt(v, min, max){ v = parseInt(v,10); if (isNaN(v)) return min; return Math.max(min, Math.min(max, v)); }
+    /* ============
+       DATA: 6 products per category
+       Replace image and link fields with your real images and affiliate links.
+       ============ */
+    const CATEGORIES = {
+      pcgamer: [
+        { id:'pc1', nome:'Teclado Mecânico RGB', preco:'R$ 249,90', imagem:'https://m.media-amazon.com/images/I/71kr3WAj1FL._AC_SL1500_.jpg', link:'https://www.amazon.com/' },
+        { id:'pc2', nome:'Mouse Gamer Pro', preco:'R$ 159,90', imagem:'https://m.media-amazon.com/images/I/61k5+JAXeDL._AC_SL1500_.jpg', link:'https://www.amazon.com/' },
+        { id:'pc3', nome:'Headset Gamer 7.1', preco:'R$ 299,90', imagem:'https://m.media-amazon.com/images/I/61CGHv6kmWL._AC_SL1500_.jpg', link:'https://www.amazon.com/' },
+        { id:'pc4', nome:'Mousepad XL', preco:'R$ 39,90', imagem:'https://via.placeholder.com/600x400?text=Mousepad', link:'https://www.amazon.com/' },
+        { id:'pc5', nome:'Webcam HD', preco:'R$ 199,90', imagem:'https://via.placeholder.com/600x400?text=Webcam', link:'https://www.amazon.com/' },
+        { id:'pc6', nome:'Teclado Macro', preco:'R$ 189,90', imagem:'https://via.placeholder.com/600x400?text=Macro+Keyboard', link:'https://www.amazon.com/' }
+      ],
+      acessorios: [
+        { id:'ac1', nome:'Headset Pro X', preco:'R$ 299,90', imagem:'https://m.media-amazon.com/images/I/61CGHv6kmWL._AC_SL1500_.jpg', link:'https://www.amazon.com/' },
+        { id:'ac2', nome:'Adaptador USB Bluetooth', preco:'R$ 69,90', imagem:'https://via.placeholder.com/600x400?text=Bluetooth+USB', link:'https://www.amazon.com/' },
+        { id:'ac3', nome:'Base Refrigerada', preco:'R$ 129,90', imagem:'https://via.placeholder.com/600x400?text=Base+Refrigerada', link:'https://www.amazon.com/' },
+        { id:'ac4', nome:'Suporte Headset', preco:'R$ 49,90', imagem:'https://via.placeholder.com/600x400?text=Suporte+Headset', link:'https://www.amazon.com/' },
+        { id:'ac5', nome:'Hub USB 3.0', preco:'R$ 89,90', imagem:'https://via.placeholder.com/600x400?text=Hub+USB', link:'https://www.amazon.com/' },
+        { id:'ac6', nome:'Cabo USB-C', preco:'R$ 39,90', imagem:'https://via.placeholder.com/600x400?text=Cabo+USB-C', link:'https://www.amazon.com/' }
+      ],
+      laptops: [
+        { id:'lp1', nome:'Ultrabook 14\" SSD', preco:'R$ 3.999,00', imagem:'https://m.media-amazon.com/images/I/81bc8mA3nKL._AC_SL1500_.jpg', link:'https://www.amazon.com/' },
+        { id:'lp2', nome:'Notebook Gamer 15\"', preco:'R$ 7.499,00', imagem:'https://via.placeholder.com/600x400?text=Notebook+Gamer', link:'https://www.amazon.com/' },
+        { id:'lp3', nome:'Laptop Business', preco:'R$ 4.999,00', imagem:'https://via.placeholder.com/600x400?text=Laptop+Business', link:'https://www.amazon.com/' },
+        { id:'lp4', nome:'Chromebook', preco:'R$ 1.299,00', imagem:'https://via.placeholder.com/600x400?text=Chromebook', link:'https://www.amazon.com/' },
+        { id:'lp5', nome:'2-in-1 Touch', preco:'R$ 2.799,00', imagem:'https://via.placeholder.com/600x400?text=2in1+Touch', link:'https://www.amazon.com/' },
+        { id:'lp6', nome:'Docking Station', preco:'R$ 499,00', imagem:'https://via.placeholder.com/600x400?text=Docking', link:'https://www.amazon.com/' }
+      ],
+      tablets: [
+        { id:'tb1', nome:'Tablet Android 10\"', preco:'R$ 1.299,00', imagem:'https://m.media-amazon.com/images/I/71+QY8xN1fL._AC_SL1500_.jpg', link:'https://www.amazon.com/' },
+        { id:'tb2', nome:'Tablet com Pen', preco:'R$ 1.599,00', imagem:'https://via.placeholder.com/600x400?text=Tablet+Pen', link:'https://www.amazon.com/' },
+        { id:'tb3', nome:'E-reader 8\"', preco:'R$ 499,00', imagem:'https://via.placeholder.com/600x400?text=Ereader', link:'https://www.amazon.com/' },
+        { id:'tb4', nome:'Tablet Kids', preco:'R$ 399,00', imagem:'https://via.placeholder.com/600x400?text=Kids+Tablet', link:'https://www.amazon.com/' },
+        { id:'tb5', nome:'Suporte para Tablet', preco:'R$ 129,00', imagem:'https://via.placeholder.com/600x400?text=Support', link:'https://www.amazon.com/' },
+        { id:'tb6', nome:'Teclado Bluetooth Tablet', preco:'R$ 199,00', imagem:'https://via.placeholder.com/600x400?text=Keyboard+Tablet', link:'https://www.amazon.com/' }
+      ],
+      telefones: [
+        { id:'ph1', nome:'Smartphone Pro', preco:'R$ 4.499,00', imagem:'https://m.media-amazon.com/images/I/61m9Jk4C9jL._AC_SL1500_.jpg', link:'https://www.amazon.com/' },
+        { id:'ph2', nome:'Smart Basic', preco:'R$ 699,00', imagem:'https://via.placeholder.com/600x400?text=Smart+Basic', link:'https://www.amazon.com/' },
+        { id:'ph3', nome:'Phone Case', preco:'R$ 49,90', imagem:'https://via.placeholder.com/600x400?text=Case', link:'https://www.amazon.com/' },
+        { id:'ph4', nome:'Powerbank 10000mAh', preco:'R$ 179,00', imagem:'https://via.placeholder.com/600x400?text=Powerbank', link:'https://www.amazon.com/' },
+        { id:'ph5', nome:'Carregador Turbo', preco:'R$ 129,00', imagem:'https://via.placeholder.com/600x400?text=Turbo+Charger', link:'https://www.amazon.com/' },
+        { id:'ph6', nome:'Fone Bluetooth', preco:'R$ 249,00', imagem:'https://via.placeholder.com/600x400?text=Earbuds', link:'https://www.amazon.com/' }
+      ],
+      outros: [
+        { id:'ot1', nome:'Cable Kit', preco:'R$ 39,90', imagem:'https://m.media-amazon.com/images/I/51cablekit._AC_.jpg', link:'https://www.amazon.com/' },
+        { id:'ot2', nome:'Ferramenta Multiuso', preco:'R$ 89,90', imagem:'https://via.placeholder.com/600x400?text=Tools', link:'https://www.amazon.com/' },
+        { id:'ot3', nome:'Luz LED USB', preco:'R$ 29,90', imagem:'https://via.placeholder.com/600x400?text=LED+Light', link:'https://www.amazon.com/' },
+        { id:'ot4', nome:'Suporte Veicular', preco:'R$ 79,90', imagem:'https://via.placeholder.com/600x400?text=Car+Mount', link:'https://www.amazon.com/' },
+        { id:'ot5', nome:'Organizador de Cabos', preco:'R$ 49,90', imagem:'https://via.placeholder.com/600x400?text=Cable+Organizer', link:'https://www.amazon.com/' },
+        { id:'ot6', nome:'Kit Limpeza', preco:'R$ 29,90', imagem:'https://via.placeholder.com/600x400?text=Cleaning+Kit', link:'https://www.amazon.com/' }
+      ]
+    };
 
-/* ================
-   Main rendering logic
-   ================ */
-const selectedCat = (qs('cat') || '').toLowerCase();
-const indexParam = qs('index'); // optional index to show a different product
-const productIndex = indexParam ? clampInt(indexParam, 0, 1000) : 0; // will clamp later
+    /* ============
+       Helpers
+       ============ */
+    function qs(name){ return new URLSearchParams(location.search).get(name); }
+    function esc(s){ return String(s||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 
-// If a category is present in URL and exists in our data -> render single-view
-if (selectedCat && (selectedCat === 'faq' || Object.prototype.hasOwnProperty.call(CATEGORIES, selectedCat))) {
-  // Put body into no-scroll mode
-  document.documentElement.classList.add('no-scroll');
-  document.body.classList.add('no-scroll');
-
-  // Clear normal content
-  const main = document.getElementById('main');
-  main.innerHTML = ''; // remove the homepage intro
-
-  // If FAQ
-  if (selectedCat === 'faq') {
-    // Render a simple standalone FAQ view (single-view)
-    const wrapper = document.createElement('div');
-    wrapper.className = 'single-view';
-    wrapper.innerHTML = `
-      <div class="single-card" role="main" aria-labelledby="faq-title">
-        <div class="single-info" style="width:100%">
-          <h2 id="faq-title">FAQ — TechNovaStore</h2>
-          <p><strong>1. Como comprar?</strong> Clique no botão <em>Comprar</em> para ir ao link do produto.</p>
-          <p><strong>2. Envia para qualquer país?</strong> Dependendo do vendedor/loja (Amazon Global disponível em muitos produtos).</p>
-          <p><strong>3. Este site é oficial?</strong> Este exemplo mostra um site afiliado — substitua os links por seus links de afiliado reais.</p>
-          <div class="controls" style="margin-top:18px">
-            <a class="link-neutral" href="/" onclick="window.location='/'">Ir para Home</a>
+    /* ============
+       Home rendering: one sample per category
+       ============
+    */
+    function renderHome(){
+      // produtosGrid
+      const grid = document.getElementById('produtosGrid');
+      grid.innerHTML = '';
+      Object.keys(CATEGORIES).forEach(cat=>{
+        const sample = CATEGORIES[cat][0];
+        const art = document.createElement('article');
+        art.className = 'card';
+        art.innerHTML = `
+          <img src="${esc(sample.imagem)}" alt="${esc(sample.nome)}" loading="lazy">
+          <h3>${esc(sample.nome)}</h3>
+          <div class="price">${esc(sample.preco)}</div>
+          <div class="actions">
+            <a class="btn btn-primary" href="?cat=${encodeURIComponent(cat)}" target="_blank" rel="noopener noreferrer">Abrir categoria</a>
+            <a class="btn btn-outline" href="${esc(sample.link)}" target="_blank" rel="noopener noreferrer">Comprar</a>
           </div>
-        </div>
-      </div>
-    `;
-    main.appendChild(wrapper);
-  } else {
-    // Normal category: show only one product (first or index specified)
-    const arr = CATEGORIES[selectedCat] || [];
-    const idx = Math.min(Math.max(0, productIndex), Math.max(0, arr.length-1));
-    const product = arr[idx];
+        `;
+        grid.appendChild(art);
+      });
 
-    // If not found, show friendly message
-    if (!product) {
-      const wrapper = document.createElement('div');
-      wrapper.className = 'single-view';
-      wrapper.innerHTML = `
-        <div class="single-card" role="main">
-          <div class="single-info">
-            <h2>Categoria vazia</h2>
-            <p>Não há produtos nesta categoria.</p>
-            <div class="controls">
-              <a class="link-neutral" href="/" onclick="window.location='/'">Ir para Home</a>
-            </div>
+      // category buttons with side image
+      const catButtons = document.getElementById('homeCatButtons');
+      catButtons.innerHTML = '';
+      Object.keys(CATEGORIES).forEach(cat=>{
+        const sample = CATEGORIES[cat][0];
+        const a = document.createElement('a');
+        a.className = 'cat-button';
+        a.href = '?cat=' + encodeURIComponent(cat);
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.innerHTML = `<img src="${esc(sample.imagem)}" alt="${esc(cat)}"><div style="display:flex;flex-direction:column"><strong style="font-size:0.95rem">${(cat==='pcgamer'?'PC Gamer': cat==='acessorios'?'Acessórios': cat==='laptops'?'Laptops': cat==='tablets'?'Tablets': cat==='telefones'?'Telefones':'Outros')}</strong><small style="color:var(--muted)">${esc(sample.nome)}</small></div>`;
+        catButtons.appendChild(a);
+      });
+    }
+
+    /* ============
+       Comments (localStorage)
+       key: tn_comments_{category}
+       ============ */
+    function loadComments(category){ try{ return JSON.parse(localStorage.getItem('tn_comments_' + (category||'home')) || '[]'); }catch(e){return [];} }
+    function saveComment(category, name, text){
+      const key = 'tn_comments_' + (category || 'home');
+      const list = loadComments(category);
+      list.unshift({date: new Date().toISOString(), name: name || 'Anon', text: text});
+      localStorage.setItem(key, JSON.stringify(list));
+    }
+    function clearAllComments(){
+      Object.keys(localStorage).forEach(k => { if(k.indexOf('tn_comments_') === 0) localStorage.removeItem(k); });
+    }
+    function renderCommentList(category){
+      const listDiv = document.getElementById('commentList');
+      listDiv.innerHTML = '';
+      const items = loadComments(category || 'home');
+      if(!items.length){ listDiv.innerHTML = '<div class="muted">Nenhum comentário ainda. Seja o primeiro!</div>'; return; }
+      items.forEach(it=> {
+        const d = document.createElement('div');
+        d.className = 'comment-item';
+        d.innerHTML = `<div style="font-weight:700">${esc(it.name)} <span style="font-weight:400;color:var(--muted);font-size:0.85rem">— ${new Date(it.date).toLocaleString()}</span></div><div style="margin-top:8px">${esc(it.text)}</div>`;
+        listDiv.appendChild(d);
+      });
+    }
+
+    /* ============
+       Category page renderer: shows 6 products for that category,
+       followed by video, FAQ, and comments for that category.
+       This runs when URL contains ?cat=category
+       ============ */
+    function renderCategoryPage(category){
+      const main = document.getElementById('main');
+      main.innerHTML = ''; // clear home content
+
+      // Title
+      const sec = document.createElement('section');
+      sec.className = 'section category-view';
+      const title = document.createElement('h2');
+      title.className = 'title';
+      title.textContent = (category==='pcgamer'?'PC Gamer': category==='acessorios'?'Acessórios': category==='laptops'?'Laptops': category==='tablets'?'Tablets': category==='telefones'?'Telefones':'Outros');
+      sec.appendChild(title);
+
+      // Grid of 6 products
+      const grid = document.createElement('div');
+      grid.className = 'grid category-grid';
+      const arr = (CATEGORIES[category] || []).slice(0,6);
+      arr.forEach(p => {
+        const c = document.createElement('article');
+        c.className = 'card';
+        c.innerHTML = `
+          <img src="${esc(p.imagem)}" alt="${esc(p.nome)}" loading="lazy">
+          <h3>${esc(p.nome)}</h3>
+          <div class="price">${esc(p.preco)}</div>
+          <div class="actions">
+            <a class="btn btn-primary" href="${esc(p.link)}" target="_blank" rel="noopener noreferrer">Comprar</a>
+            <a class="btn btn-outline" href="/" rel="noopener noreferrer">Voltar</a>
           </div>
-        </div>`;
-      main.appendChild(wrapper);
-    } else {
-      // Render single product view (no scroll)
-      const wrapper = document.createElement('div');
-      wrapper.className = 'single-view';
-      // allow user to pass index to show specific product; show index in UI and provide nav for next/prev (keeps single-file)
-      const total = arr.length;
-      wrapper.innerHTML = `
-        <div class="single-card" role="main" aria-labelledby="prod-title">
-          <img src="${encodeURI(product.imagem)}" alt="${escapeHtml(product.nome)}" />
-          <div class="single-info">
-            <h2 id="prod-title">${escapeHtml(product.nome)}</h2>
-            <p class="price">${escapeHtml(product.preco)}</p>
-            <p>Categoria: <strong>${escapeHtml(selectedCat)}</strong></p>
-            <div class="meta-row">
-              <a class="buy" href="${product.link}" target="_blank" rel="noopener noreferrer">Comprar</a>
-              <a class="link-neutral" href="/" onclick="window.location='/'">Voltar ao site</a>
-              <div style="margin-left:auto;color:#6b7280;font-weight:700">1 / ${total}</div>
-            </div>
+        `;
+        grid.appendChild(c);
+      });
+      sec.appendChild(grid);
+
+      // Video block (after products)
+      const vidSec = document.createElement('div');
+      vidSec.className = 'section';
+      vidSec.innerHTML = `<h3 class="title">Trailer / Vídeo da Categoria</h3><div class="block"><iframe src="https://www.youtube.com/embed/ZIPuaWKUQis" title="Trailer" loading="lazy" allowfullscreen></iframe></div>`;
+      sec.appendChild(vidSec);
+
+      // FAQ (after video)
+      const faqSec = document.createElement('div');
+      faqSec.className = 'section';
+      faqSec.innerHTML = `<h3 class="title">Perguntas Frequentes</h3><div class="block"><p><strong>Como comprar?</strong> Clique em Comprar. <br><strong>Envio:</strong> Verifique no vendedor.</p></div>`;
+      sec.appendChild(faqSec);
+
+      // Comments for this category
+      const commSec = document.createElement('div');
+      commSec.className = 'section';
+      commSec.innerHTML = `
+        <h3 class="title">Comentários — ${esc(title.textContent)}</h3>
+        <div class="block">
+          <input id="catCommentName" placeholder="Seu nome (opcional)" style="padding:10px;border-radius:8px;border:1px solid #e6eef7;width:100%;max-width:420px" />
+          <div style="margin-top:8px"><textarea id="catCommentText" placeholder="Escreva seu comentário..."></textarea></div>
+          <div style="margin-top:8px;display:flex;gap:8px">
+            <button id="catSend" class="btn btn-primary">Enviar comentário</button>
+            <button id="catClear" class="btn btn-outline">Limpar comentários locais</button>
+            <a class="btn btn-outline" href="/" style="margin-left:auto">Voltar ao site</a>
           </div>
+          <div class="comment-list" id="catCommentList" style="margin-top:12px"></div>
         </div>
       `;
-      main.appendChild(wrapper);
-    }
-  }
-} else {
-  // Home view: render small previews for categories
-  const grid = document.getElementById('homeGrid');
-  Object.keys(CATEGORIES).forEach(catKey => {
-    const arr = CATEGORIES[catKey];
-    // Some categories might be empty arrays; skip if no products (but still show if empty)
-    const first = Array.isArray(arr) && arr.length ? arr[0] : null;
-    const card = document.createElement('div');
-    card.className = 'card';
-    card.style.minHeight = '140px';
-    card.innerHTML = `
-      <h3 style="margin:0 0 8px">${upperLabel(catKey)}</h3>
-      ${ first ? `<img src="${encodeURI(first.imagem)}" alt="${escapeHtml(first.nome)}" style="height:120px;object-fit:cover;margin-bottom:8px;border-radius:8px" />` : '<div style="height:120px;background:#f5f7fa;border-radius:8px"></div>' }
-      <div style="display:flex;gap:8px;align-items:center">
-        <a class="buy" href="?cat=${encodeURIComponent(catKey)}" target="_blank" rel="noopener noreferrer" style="background:#0b63d6">Abrir categoria</a>
-        ${ first ? `<a class="link-neutral" href="${first.link}" target="_blank" rel="noopener noreferrer">Comprar (exemplo)</a>` : '' }
-      </div>
-    `;
-    grid.appendChild(card);
-  });
-}
+      sec.appendChild(commSec);
 
-/* ================
-   Small helpers
-   ================ */
-function upperLabel(key){
-  const map = {
-    'pcgamer':'PC Gamer',
-    'acessorios':'Acessórios',
-    'laptops':'Laptops',
-    'tablets':'Tablets',
-    'telefones':'Telefones',
-    'outros':'Outros'
-  };
-  return map[key] || key;
-}
-function escapeHtml(str){
-  if (!str && str!==0) return '';
-  return String(str).replace(/[&<>"']/g, function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]; });
-}
-</script>
+      main.appendChild(sec);
+
+      // Bind comments actions
+      function refreshCatComments(){
+        const list = loadComments(category);
+        const listDiv = document.getElementById('catCommentList');
+        listDiv.innerHTML = '';
+        if(!list.length){ listDiv.innerHTML = '<div class="muted">Nenhum comentário ainda.</div>'; return; }
+        list.forEach(it=>{
+          const d = document.createElement('div'); d.className='comment-item';
+          d.innerHTML = `<div style="font-weight:700">${esc(it.name)} <span style="font-weight:400;color:var(--muted);font-size:0.9rem">— ${new Date(it.date).toLocaleString()}</span></div><div style="margin-top:6px">${esc(it.text)}</div>`;
+          listDiv.appendChild(d);
+        });
+      }
+      document.getElementById('catSend').addEventListener('click', ()=>{
+        const name = document.getElementById('catCommentName').value.trim() || 'Anon';
+        const text = document.getElementById('catCommentText').value.trim();
+        if(!text){ alert('Escreva um comentário antes de enviar.'); return; }
+        saveComment(category, name, text);
+        document.getElementById('catCommentText').value = '';
+        document.getElementById('catCommentName').value = '';
+        refreshCatComments();
+      });
+      document.getElementById('catClear').addEventListener('click', ()=>{
+        if(!confirm('Remover todos os comentários desta categoria do seu navegador?')) return;
+        localStorage.removeItem('tn_comments_' + category);
+        refreshCatComments();
+      });
+      refreshCatComments();
+    }
+
+    /* ============
+       Init: decide whether to render home or category page
+       ============ */
+    const selectedCat = (qs('cat') || '').toLowerCase();
+    if(selectedCat && CATEGORIES[selectedCat]){
+      renderCategoryPage(selectedCat);
+    } else {
+      // Home
+      renderHome();
+
+      // Hook comment actions on home
+      const sendBtn = document.getElementById('sendComment');
+      const clearBtn = document.getElementById('clearAll');
+      const catSelect = document.getElementById('commentCategory');
+
+      sendBtn.addEventListener('click', ()=>{
+        const cat = catSelect.value || 'home';
+        const name = document.getElementById('commentName').value.trim() || 'Anon';
+        const text = document.getElementById('commentText').value.trim();
+        if(!text){ alert('Escreva um comentário antes de enviar.'); return; }
+        saveComment(cat, name, text);
+        document.getElementById('commentText').value = '';
+        document.getElementById('commentName').value = '';
+        renderCommentList(cat);
+      });
+
+      clearBtn.addEventListener('click', ()=>{
+        if(!confirm('Limpar todos os comentários locais?')) return;
+        clearAllComments();
+        renderCommentList(catSelect.value || 'home');
+      });
+
+      catSelect.addEventListener('change', ()=> renderCommentList(catSelect.value || 'home'));
+
+      renderCommentList('home');
+    }
+
+    /* ============
+       JSON-LD injection for products (SEO)
+       Appends a script tag with all products structured as schema.org/Product
+       ============ */
+    (function injectJSONLD(){
+      try{
+        const graph = [];
+        Object.keys(CATEGORIES).forEach(cat=>{
+          CATEGORIES[cat].forEach(p=>{
+            const priceDigits = (p.preco || '').replace(/[^\d.,]/g,'').replace(',', '.').trim() || '0';
+            graph.push({
+              "@type":"Product",
+              "@id": `https://seuusuario.github.io/seurepo/#${p.id}`,
+              "name": p.nome,
+              "image": [p.imagem],
+              "description": `Produto ${p.nome} - categoria ${cat} — TechNova Store.`,
+              "brand": {"@type":"Brand","name":"TechNova Store"},
+              "offers": {
+                "@type":"Offer",
+                "url": p.link,
+                "price": priceDigits,
+                "priceCurrency": "BRL",
+                "availability": "https://schema.org/InStock"
+              }
+            });
+          });
+        });
+        const s = document.createElement('script');
+        s.type = 'application/ld+json';
+        s.text = JSON.stringify({"@context":"https://schema.org","@graph": graph}, null, 2);
+        document.head.appendChild(s);
+      }catch(e){
+        console.warn('JSON-LD injection falhou', e);
+      }
+    })();
+
+    /* Expose for debugging */
+    window.TECHNOVA = { CATEGORIES, renderHome, renderCategoryPage, loadComments };
+  })();
+  </script>
 </body>
 </html>
