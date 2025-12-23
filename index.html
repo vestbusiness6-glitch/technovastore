@@ -243,6 +243,8 @@
         { id:'ac7', nome:'Teclado Mecânico RGB', preco:'$ 54,99', imagem:"https://i.ibb.co/3Yp5nc96/7165-L-SRf-DL-AC-SL1500.jpg", link:'https://amzn.to/4ixeB2Y' },
         { id:'ac8', nome:'4K Webcam', preco:'44,99', imagem:"https://i.ibb.co/wN1mGFy3/61-Hnx3-Wkh-KL-AC-SY300-SX300-QL70-FMwebp.webp", link:'https://amzn.to/4aoqPJ8' },
         { id:'ac9', nome:'redragon Keyboard', preco:'69,99', imagem:"https://i.ibb.co/r2wKR373/71-Kd-Hj6w-EDL-AC-SL1500.jpg", link:'https://amzn.to/3LhirAS' },
+        { id:'ac10',nome:'Gaming Mouse Pad', preco:'15,99', imagem:"https://i.ibb.co/MxmNGMck/71c0-Zb-Uj-V2-L-AC-SL1500.jpg", link:'https://amzn.to/4avWetg' },
+        { id:'ac11', nome:'RGB Gaming Mouse Pad', preco:'17,99', imagem:"https://i.ibb.co/4nZwWMXY/713r-Dkt51-TL-AC-SL1500.jpg", link:'https://amzn.to/4jvGcSJ' },
       ],
       laptops: [
         { id:'lp1', nome:'Lenovo IdeaPad 1 15.6', preco:'$ 489,00', imagem:"https://i.ibb.co/PZNPtCLv/71e-L-Z5-R9-IL-AC-SL1500.jpg", link:'https://amzn.to/4pDNCVJ' },
@@ -370,7 +372,7 @@
       // Grid of 6 products
       const grid = document.createElement('div');
       grid.className = 'grid category-grid';
-      const arr = (CATEGORIES[category] || []).slice(0,10);
+      const arr = (CATEGORIES[category] || []).slice(0,20);
       arr.forEach(p => {
         const c = document.createElement('article');
         c.className = 'card';
